@@ -17,16 +17,13 @@ public class DBConnection {
         String user = System.getenv("DB_USER");
         String pass = System.getenv("DB_PASS");
 
-        // fallback for local development
         if (url == null) url = "jdbc:mysql://localhost:3306/taskdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
         if (user == null) user = "root";
         if (pass == null) pass = "Sonam@9022";
 
-        System.out.println(">>> Connecting to: " + url);
-        System.out.println(">>> User: " + user);
+        System.out.println(">>> DB_URL = " + url);
+        System.out.println(">>> DB_USER = " + user);
 
         return DriverManager.getConnection(url, user, pass);
     }
 }
-
-
