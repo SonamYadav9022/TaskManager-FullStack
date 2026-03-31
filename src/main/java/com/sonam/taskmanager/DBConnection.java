@@ -17,7 +17,6 @@ public class DBConnection {
         } catch (ClassNotFoundException e) {
             throw new SQLException("MySQL Driver not found!", e);
         }
-        // Read from environment variables (Railway will provide these)
         String url = System.getenv().getOrDefault("DB_URL",
                 "jdbc:mysql://localhost:3306/taskdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
         String user = System.getenv().getOrDefault("DB_USER", "root");
