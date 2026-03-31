@@ -14,12 +14,15 @@ public class TaskDAO {
     public void addTask(Task task) {
         try {
             Connection conn = DBConnection.getConnection();
+            conn.setAutoCommit(true);
             String query = "INSERT INTO tasks (title, status, priority) VALUES (?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, task.getTitle());
             ps.setString(2, task.getStatus());
             ps.setString(3, task.getPriority());
-            ps.executeUpdate();
+            int rows = ps.executeUpdate();
+            System.out.println(">>> Rows inserted: " + rows);
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,6 +44,7 @@ public class TaskDAO {
                 task.setPriority(rs.getString("priority"));
                 tasks.add(task);
             }
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
