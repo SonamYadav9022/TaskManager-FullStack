@@ -12,18 +12,9 @@ public class DBConnection {
         } catch (ClassNotFoundException e) {
             throw new SQLException("MySQL Driver not found!", e);
         }
-
-        String url = System.getenv("DB_URL");
-        String user = System.getenv("DB_USER");
-        String pass = System.getenv("DB_PASS");
-
-        if (url == null) url = "jdbc:mysql://localhost:3306/taskdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-        if (user == null) user = "root";
-        if (pass == null) pass = "Sonam@9022";
-
-        System.out.println(">>> DB_URL = " + url);
-        System.out.println(">>> DB_USER = " + user);
-
+        String url = "jdbc:mysql://yamabiko.proxy.rlwy.net:26435/railway?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+        String user = "root";
+        String pass = "BLZKcoOsVzSNYZDZFKMchowZmkDpnVlY";
         return DriverManager.getConnection(url, user, pass);
     }
 }
